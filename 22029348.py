@@ -50,5 +50,24 @@ def curve_fit_plot(dft, df1t, country):
     plt.ylabel(df1t.columns[0])
     plt.legend(["Expected", "Predicted"], loc="upper right")
     plt.title("Curve Fit of " + country)
+    
+def kmeans_cluster(df_fit, no_clusters, labels):
+    kmeans = KMeans(n_clusters=no_clusters, random_state=0)
+    labels = kmeans.fit_predict(df_fit)
+    cen = kmeans.cluster_centers_
+    plt.scatter(df_fit.iloc[:, 0], df_fit.iloc[:, 1], c=labels, cmap="Accent")
+    for ic in range(no_clusters):
+        xc, yc = cen[ic, :]
+        plt.plot(xc, yc, "dk", markersize=10)
+    plt.xlabel(labels[0])
+    plt.ylabel(labels[1])
+    plt.title("K-means Clustering")
+
+
+# Input file paths
+fname1 = "Life expectancy at birth, total.csv"
+fname2 = "Mortality caused by road traffic injury.csv"
+# Importing warnings so that it may ignore warnings
+warnings.filterwarnings('ignore')
 
 
