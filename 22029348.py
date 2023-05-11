@@ -70,4 +70,25 @@ fname2 = "Mortality caused by road traffic injury.csv"
 # Importing warnings so that it may ignore warnings
 warnings.filterwarnings('ignore')
 
+# Invoking the function to get the data
+educationDF, dft = read_data(fname2)
+govexpenditureDF, df1t = read_data(fname1)
+labels = ["Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4"]
+
+# Taking the required years for plotting into an array
+years = [
+    "1990",
+    "2000",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018"]
+
+# Invoking convert_to_numbers methods to change the data to numeric form
+df = convert_to_numbers(educationDF, years)
+df1 = convert_to_numbers(govexpenditureDF, years)
+
 
